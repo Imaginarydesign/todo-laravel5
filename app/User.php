@@ -31,4 +31,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+  /**
+   * User has many todolists
+   * @return [type] [description]
+   */
+  public function todolists()
+    {
+      return $this->hasMany('App\Todolist');
+    }
+
 }

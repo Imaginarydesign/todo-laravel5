@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\Todolist;
+use App\User;
+use Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +34,13 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+    $user = User::find(Auth::user()->id);
+    $todolists = $user->todolists;
+
+    $data = [];
+    $data['todolists'] = $todolists;
+
+		return view('home', $data);
 	}
 
 }
