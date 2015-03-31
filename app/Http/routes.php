@@ -15,10 +15,13 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('todolists/create', 'TodoListsController@create');
-Route::get('todolists/{id}', 'TodoListsController@edit');
-Route::post('todolists/{id}/update', 'TodoListsController@update');
-Route::post('todolists', 'TodoListsController@store');
+// Route::get('todolists/create', 'TodoListsController@create');
+// Route::get('todolists/{id}', 'TodoListsController@edit');
+// Route::post('todolists/{id}/update', 'TodoListsController@update');
+// Route::post('todolists', 'TodoListsController@store');
+
+// Refactored above
+Route::resource('todolists', 'TodoListsController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

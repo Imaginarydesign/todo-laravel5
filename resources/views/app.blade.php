@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Laravel</title>
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/theme.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -53,7 +54,27 @@
 		</div>
 	</nav>
 
-	@yield('content')
+  @if (!Auth::guest())
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        @include('partials.sidebar')
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        @yield('content')
+      </div>
+    </div>
+  </div>
+  @else
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 main">
+        @yield('content')
+      </div>
+    </div>
+  </div>
+  @endif
+
 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

@@ -34,12 +34,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-    $user = User::find(Auth::user()->id);
-    $todolists = $user->todolists;
 
     $data = [];
-    $data['todolists'] = $todolists;
-
 		return view('home', $data);
 	}
 

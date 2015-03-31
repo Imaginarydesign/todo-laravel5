@@ -6,7 +6,7 @@
     <div class="col-md-10 col-md-offset-1">
       <h3>Create a new to do list</h3>
       <hr>
-      {!! Form::open(['url' => 'todolists']) !!}
+      {!! Form::open(['action' => 'TodoListsController@store']) !!}
         <div class="form-group">
           {!! Form::label('name','Name:') !!}
           {!! Form::text('name', null, ['class' => 'form-control']) !!}

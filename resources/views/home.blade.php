@@ -1,28 +1,23 @@
 @extends('app')
 
 @section('content')
-<div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">Home</div>
-				<div class="panel-body">
-					You are logged in!
-				</div>
-			</div>
-      <h3>Todo lists</h3>
-      <table class="table">
-        <tbody>
-          @foreach ($todolists as $todolist)
-          <tr>
-            <td>{{ $todolist->name }}</td>
-            <td><a href="todolists/{{ $todolist->id }}">Edit</a> | Delete</td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-      <a href="/todolists/create">Create a new todo list!</a>
-		</div>
-	</div>
-</div>
+  <h3>Todo lists</h3>
+  <table class="table table-striped">
+    <tbody>
+      @foreach ($todolists as $todolist)
+      <tr>
+        <td><a href="{{ action('TodoListsController@show', [$todolist->id]) }}">{{ $todolist->name }}</a></td>
+        <td style="text-align: right;"><a href="{{ action('TodoListsController@edit', [$todolist->id]) }}">Edit</a> | <a href="{{ link_to_route('todolists.destroy', $todolist->id) }}">Delete</a></td>
+        <?php 
+        /*
+         * Alternative ways of linking to route
+         *
+        <td><a href="/articles/{{ $todolist->id }}">Edit</a> | Delete</td>
+        <td><a href="{{ url('/articles', $todolist->id) }}">Edit</a> | Delete</td>
+        */ ?>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+  <a href="{{ action('TodoListsController@create') }}">Create a new todo list!</a>
 @endsection

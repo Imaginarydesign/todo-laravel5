@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+// use View;
 use App\Todolist;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -43,6 +44,9 @@ class TodoListsController extends Controller {
     $todolist->user_id = $input['user_id'];
     $todolist->save();
 
+    // Alternatively
+    // Todolist::create($input);
+
     return redirect('home');
 	}
 
@@ -54,7 +58,11 @@ class TodoListsController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$todolist = Todolist::find($id);
+    $data = [];
+    $data['todolist'] = $todolist;
+    // $data['todolists'] = Todolist::all();
+    return view('todolists.show', $data);
 	}
 
 	/**
@@ -68,6 +76,9 @@ class TodoListsController extends Controller {
     $todolist = Todolist::find($id);
     $data = [];
     $data['todolist'] = $todolist;
+
+    // view()->share();
+    // View::share($data);
 
 		return view('todolists/edit', $data);
 	}
@@ -97,7 +108,12 @@ class TodoListsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+
+    $todolist = Todolist::find($id);
+
+    $todolist->delete();
+
+    return redirect('home');
 	}
 
 }
