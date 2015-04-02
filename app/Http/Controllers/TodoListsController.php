@@ -4,6 +4,7 @@
 use App\Todolist;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Redirect;
 use Auth;
 
 // use Illuminate\Http\Request;
@@ -64,9 +65,13 @@ class TodoListsController extends Controller {
     $data = [];
     $data['todolist'] = $todolist;
 
-    // Check if Todolist belongs to logged in user
-    if ($todolist->user_id == Auth::user()->id) {
-      return view('todolists.show', $data);
+    if (!Auth::guest()) {
+      // Check if Todolist belongs to logged in user
+      if ($todolist->user_id == Auth::user()->id) {
+        return view('todolists.show', $data);
+      }
+    } else {
+      return redirect('home');
     }
 
     die('Not yours');
@@ -85,11 +90,15 @@ class TodoListsController extends Controller {
     $data = [];
     $data['todolist'] = $todolist;
 
-    // Check if Todolist belongs to logged in user
-    if ($todolist->user_id == Auth::user()->id) {
-		  return view('todolists/edit', $data);
+    if (!Auth::guest()) {
+      // Check if Todolist belongs to logged in user
+      if ($todolist->user_id == Auth::user()->id) {
+  		  return view('todolists/edit', $data);
+      } else {
+        return view('home');
+      }
     } else {
-      return view('home');
+      return redirect('home');
     }
 	}
 
@@ -118,7 +127,6 @@ class TodoListsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-
     $todolist = Todolist::find($id);
 
     $todolist->delete();
