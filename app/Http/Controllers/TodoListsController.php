@@ -63,19 +63,25 @@ class TodoListsController extends Controller {
 	{
 		$todolist = Todolist::find($id);
 
-    $data = [];
-    $data['todolist'] = $todolist;
+    // Check if todolist exist
+    if ($todolist) {
+      $data = [];
+      $data['todolist'] = $todolist;
 
-    if (!Auth::guest()) {
-      // Check if Todolist belongs to logged in user
-      if ($todolist->user_id == Auth::user()->id) {
-        return view('todolists.show', $data);
+      // If current user is loggedin
+      if (!Auth::guest()) {
+        // Check if Todolist belongs to loggedin user
+        if ($todolist->user_id == Auth::user()->id) {
+          return view('todolists.show', $data);
+        }
+      } else {
+        // Redirect to home
+        return redirect('home');
       }
+      die('Not yours');
     } else {
       return redirect('home');
     }
-
-    die('Not yours');
     
 	}
 
