@@ -5,6 +5,7 @@ use App\Todolist;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Redirect;
+use App\Http\Requests\CreateTodolistRequest;
 use Auth;
 
 // use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class TodoListsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateTodolistRequest $request)
 	{
     $input = Request::all();
 
