@@ -4,6 +4,7 @@
 use App\Todolist;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
 
 // use Illuminate\Http\Request;
 use Request;
@@ -59,10 +60,17 @@ class TodoListsController extends Controller {
 	public function show($id)
 	{
 		$todolist = Todolist::find($id);
+
     $data = [];
     $data['todolist'] = $todolist;
-    // $data['todolists'] = Todolist::all();
-    return view('todolists.show', $data);
+
+    // Check if Todolist belongs to logged in user
+    if ($todolist->user_id == Auth::user()->id) {
+      return view('todolists.show', $data);
+    }
+
+    die('Not yours');
+    
 	}
 
 	/**
@@ -77,10 +85,12 @@ class TodoListsController extends Controller {
     $data = [];
     $data['todolist'] = $todolist;
 
-    // view()->share();
-    // View::share($data);
-
-		return view('todolists/edit', $data);
+    // Check if Todolist belongs to logged in user
+    if ($todolist->user_id == Auth::user()->id) {
+		  return view('todolists/edit', $data);
+    } else {
+      return view('home');
+    }
 	}
 
 	/**

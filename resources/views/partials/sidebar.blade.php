@@ -8,3 +8,5 @@
     </ul>
   </li>
 </ul>
+
+<a href="/todolists/create">+ Create new</a>

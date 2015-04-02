@@ -5,6 +5,7 @@
 .sidebar {
   position: fixed;
   top: 51px;
+  /*top: 0;*/
   bottom: 0;
   left: 0;
   z-index: 1000;
@@ -29,4 +30,12 @@
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
+}
+
+.main {
+  padding: 0 40px;
+}
+.main .page-header {
+  margin-top: 10px;
+  border-bottom: 1px solid #eee;
 }

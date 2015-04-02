@@ -1,11 +1,15 @@
 @extends('app')
 
 @section('content')
-<div class="container">
+  
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <h3>Create a new to do list</h3>
-      <hr>
+    
+  <div class="col-md-12">
+    <h2 class="page-header">Create todo list</h2>
+  </div>
+
+    <div class="col-md-12">
+
       {!! Form::open(['action' => 'TodoListsController@store']) !!}
         <div class="form-group">
           {!! Form::label('name','Name:') !!}
@@ -13,10 +17,10 @@
           {!! Form::hidden('user_id', Auth::user()->id) !!}
         </div>
         <div class="form-group">
-          {!! Form::submit('Save', ['class' => 'btn btn-success form-control']) !!}  
+          {!! Form::submit('Save', ['class' => 'btn btn-info']) !!}  
         </div>
       {!! Form::close() !!}
     </div>
   </div>
-</div>
+
 @endsection
