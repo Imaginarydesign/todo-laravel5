@@ -22,6 +22,7 @@ Route::get('home', 'HomeController@index');
 
 // Refactored above
 Route::resource('todolists', 'TodoListsController');
+Route::resource('todos', 'TodosController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

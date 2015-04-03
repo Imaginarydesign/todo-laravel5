@@ -19,7 +19,7 @@ class Todolist extends Model {
 
   public function todos()
     {
-      return $this->hasMany('App\Todos');
+      return $this->hasMany('App\Todo');
     }
 
 }

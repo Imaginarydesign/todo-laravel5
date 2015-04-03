@@ -1,9 +1,11 @@
 <?php namespace App\Http\Controllers;
 
+use App\Todo;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Request;
 
 class TodosController extends Controller {
 
@@ -24,7 +26,7 @@ class TodosController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return 'Create a todo form';
 	}
 
 	/**
@@ -34,7 +36,17 @@ class TodosController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$input = Request::all();
+
+    $todo = new Todo;
+    $todo->name = $input['name']; // or Request::get('name');
+    $todo->todolist_id = $input['todolist_id'];
+    $todo->save();
+
+    // Alternatively
+    // Todolist::create($input);
+
+    return redirect()->back();
 	}
 
 	/**

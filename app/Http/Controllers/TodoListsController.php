@@ -67,6 +67,7 @@ class TodoListsController extends Controller {
     if ($todolist) {
       $data = [];
       $data['todolist'] = $todolist;
+      $data['todos'] = $todolist->todos;
 
       // If current user is loggedin
       if (!Auth::guest()) {
