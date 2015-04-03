@@ -2,8 +2,7 @@
 
 @section('content')
 
-  <h2 class="page-header">{{ $todolist->name }}</h2>
-  <p><a href="{{ action('TodoListsController@edit', [$todolist->id]) }}">Rename</a></p>
+  <h2 class="page-header">{{ $todolist->name }} </h2>
 
   <table class="table">
     <tbody>
@@ -31,5 +30,8 @@
       {!! Form::submit('Save', ['class' => 'btn btn-info']) !!}  
     </div>
   {!! Form::close() !!}
+
+  <hr>
+  <p class="pull-right"><a href="{{ action('TodoListsController@edit', [$todolist->id]) }}">Rename list</a></p>
 
 @endsection
