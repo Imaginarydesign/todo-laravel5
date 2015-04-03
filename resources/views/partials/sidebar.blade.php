@@ -9,4 +9,4 @@
   </li>
 </ul>
 
-<a href="/todolists/create">+ Create new</a>
+<a href="/todolists/create">+ Create new list</a>
