@@ -11,7 +11,7 @@
       <tr>
         <td>Checkbox</td>
         <td>{{ $todo->name }}</td>
-        <td style="text-align: right;">Edit | Delete</td>
+        <td style="text-align: right;"><a href="{{ action('TodosController@edit', [$todo->id]) }}">Edit</a> | Delete</td>
       </tr>
       @endforeach
     </tbody>
@@ -23,7 +23,7 @@
 
   {!! Form::open(['action' => 'TodosController@store']) !!}
     <div class="form-group">
-      {!! Form::label('name','Name:') !!}
+      {{-- {!! Form::label('name','Name:') !!} --}}
       {!! Form::text('name', null, ['class' => 'form-control']) !!}
       {!! Form::hidden('todolist_id', $todolist->id) !!}
     </div>

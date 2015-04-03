@@ -3,6 +3,8 @@
 use App\Todo;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TodoListsController;
+use Auth;
 
 // use Illuminate\Http\Request;
 use Request;
@@ -68,7 +70,17 @@ class TodosController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$todo = Todo::find($id);
+    $data = [];
+    $data['todo'] = $todo;
+    $data['todolist'] = $todo->todolist_id;
+
+    // Check if user is logged in
+    if (!Auth::guest()) {
+      return view('todos/edit', $data);
+    } else {
+      return redirect('home');
+    }
 	}
 
 	/**
@@ -79,7 +91,14 @@ class TodosController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+    $id = Request::get('id');
+		$todolist_id = Request::get('todolist_id');
+    $todo = Todo::find($id);
+
+    $todo->name = Request::get('name');
+    $todo->save();
+
+    return redirect()->action('TodoListsController@show', ['todolist_id' => $todolist_id]);
 	}
 
 	/**
