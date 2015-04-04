@@ -6,13 +6,16 @@
 
   <table class="table">
     <tbody>
+      {!! Form::open(['action' => 'TodosController@store']) !!}
       @foreach ($todos as $todo)
       <tr>
-        <td>Checkbox</td>
+        <td>{!! Form::checkbox('completed', '1') !!}</td>
         <td>{{ $todo->name }}</td>
         <td style="text-align: right;"><a href="{{ action('TodosController@edit', [$todo->id]) }}">Edit</a> | Delete</td>
       </tr>
       @endforeach
+      {!! Form::close() !!}
+
     </tbody>
   </table>
 
