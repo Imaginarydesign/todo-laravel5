@@ -95,7 +95,15 @@ class TodosController extends Controller {
 		$todolist_id = Request::get('todolist_id');
     $todo = Todo::find($id);
 
-    $todo->name = Request::get('name');
+    if (Request::get('name')) {
+      $todo->name = Request::get('name');
+    }
+    if (Request::get('completed')) {
+      $todo->completed = 1;
+    } else {
+      $todo->completed = 0;
+    }
+    // die();
     $todo->save();
 
     return redirect()->action('TodoListsController@show', ['todolist_id' => $todolist_id]);

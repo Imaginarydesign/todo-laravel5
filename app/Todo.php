@@ -6,7 +6,8 @@ class Todo extends Model {
 
   protected $fillable = [
     'name',
-    'todolist_id'
+    'todolist_id',
+    'completed'
   ];
 
 	/**

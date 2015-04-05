@@ -6,16 +6,17 @@
 
   <table class="table">
     <tbody>
-      {!! Form::open(['action' => 'TodosController@store']) !!}
       @foreach ($todos as $todo)
       <tr>
-        <td>{!! Form::checkbox('completed', '1') !!}</td>
+        @if ($todo->completed == 1) 
+        <td><input type="checkbox" name="completed" id="{{ $todo->id }}" checked="checked"></td>
+        @else
+        <td><input type="checkbox" name="completed" id="{{ $todo->id }}"></td>
+        @endif
         <td>{{ $todo->name }}</td>
         <td style="text-align: right;"><a href="{{ action('TodosController@edit', [$todo->id]) }}">Edit</a> | Delete</td>
       </tr>
       @endforeach
-      {!! Form::close() !!}
-
     </tbody>
   </table>
 
@@ -25,7 +26,6 @@
 
   {!! Form::open(['action' => 'TodosController@store']) !!}
     <div class="form-group">
-      {{-- {!! Form::label('name','Name:') !!} --}}
       {!! Form::text('name', null, ['class' => 'form-control']) !!}
       {!! Form::hidden('todolist_id', $todolist->id) !!}
     </div>
@@ -36,5 +36,34 @@
 
   <hr>
   <p class="pull-right"><a href="{{ action('TodoListsController@edit', [$todolist->id]) }}">Rename list</a></p>
+
+@endsection
+
+@section('scripts')
+
+<!-- Mark todo as complete
+================================================== -->
+<script type="text/javascript">
+  $(function() {
+    $('input[name=\'completed\']').click(function(){
+      var todo_id = $(this).attr('id');
+      if ($(this).is(':checked')) {
+        var todo_completed = $(this).val();
+      } 
+      var url = '/todos/' + todo_id;
+      var token = "{!!  csrf_token()   !!}";
+
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: { id: todo_id, _token: token,  _method:"PATCH", completed: todo_completed },
+        success: function(data){
+          console.log("completed "+ todo_id);
+        }
+      });
+
+    });
+  });
+</script>
 
 @endsection
