@@ -21,7 +21,8 @@ class CreateTodosTable extends Migration {
 
       $table->foreign('todolist_id')
         ->references('id')
-        ->on('todolists');
+        ->on('todolists')
+        ->onDelete('cascade');
 		});
 	}
 

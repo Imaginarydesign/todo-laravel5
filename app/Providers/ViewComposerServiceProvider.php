@@ -20,9 +20,8 @@ class ViewComposerServiceProvider extends ServiceProvider {
     {
       if (!Auth::guest()) {
         $user = User::find(Auth::user()->id);
-        $todolists = $user->todolists;
-
-        $view->with('todolists', $todolists);
+        // $todolists = $user->todolists;
+        $view->with('user', $user);
       }
     });
 	}

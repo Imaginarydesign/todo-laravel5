@@ -103,7 +103,6 @@ class TodosController extends Controller {
     } else {
       $todo->completed = 0;
     }
-    // die();
     $todo->save();
 
     return redirect()->action('TodoListsController@show', ['todolist_id' => $todolist_id]);
@@ -117,7 +116,13 @@ class TodosController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$id = Request::get('id');
+    $todolist_id = Request::get('todolist_id');
+    $todo = Todo::find($id);
+    $todo->delete();
+
+    return redirect()->action('TodoListsController@show', ['todolist_id' => $todolist_id]);
+    // return redirect()->back();
 	}
 
 }
