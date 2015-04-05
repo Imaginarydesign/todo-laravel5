@@ -5,7 +5,7 @@
   <div class="row">
     
   <div class="col-md-12">
-    <h2 class="page-header">Create todo list</h2>
+    <h2 class="page-header">New todo list</h2>
   </div>
 
     <div class="col-md-12">

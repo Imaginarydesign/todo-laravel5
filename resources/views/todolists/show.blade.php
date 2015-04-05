@@ -3,8 +3,8 @@
 @section('content')
 
   <h2 class="page-header pull-left">{{ $todolist->name }} </h2>
-  <p class="pull-right" style="line-height: 55px;"><a href="{{ action('TodoListsController@edit', [$todolist->id]) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Rename</a> | <a href="javascript:deleteTodoList({{$todolist->id}});"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a></p>
-  <table class="table">
+  <p class="pull-right" style="line-height: 55px;"><a href="{{ action('TodoListsController@edit', [$todolist->id]) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit list</a> | <a href="javascript:deleteTodoList({{$todolist->id}});"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete list</a></p>
+  <table class="table table-hover">
     <tbody>
       @foreach ($todolist->todos as $todo)
       <tr id="{{ $todo->id }}">
@@ -22,12 +22,12 @@
 
   <hr>
 
-  <p>+ Create new task</p>
+  {{-- <p>+ Create new task</p> --}}
   {!! Form::open(['action' => 'TodosController@store', 'class' => 'form-horizontal']) !!}
   <div class="row">
     <div class="col-md-6">
       <div class="input-group">
-        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Create new task...']) !!}
+        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => '+ Create new task...']) !!}
         {!! Form::hidden('todolist_id', $todolist->id) !!}
         <span class="input-group-btn">
           {!! Form::submit('Create', ['class' => 'btn btn-info']) !!}
