@@ -39,3 +39,9 @@
   margin-top: 10px;
   border-bottom: none;
 }
+
+.completed {
+  color: #ccc;
+  text-decoration: line-through;
+  opacity: 0.6;
+}

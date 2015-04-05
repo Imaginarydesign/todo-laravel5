@@ -41,15 +41,21 @@
 
 @section('scripts')
 
-<!-- Mark todo as complete
-================================================== -->
 <script type="text/javascript">
   $(function() {
-    $('input[name=\'completed\']').click(function(){
+
+
+    $(":checked").parent().parent().addClass('completed');
+
+    // Mark todo as complete
+    $("input[name='completed']").click(function(){
       var todo_id = $(this).attr('id');
       if ($(this).is(':checked')) {
         var todo_completed = $(this).val();
-      } 
+        $(this).parent().parent().addClass('completed');
+      } else {
+        $(this).parent().parent().removeClass('completed');
+      }
       var url = '/todos/' + todo_id;
       var token = "{!!  csrf_token()   !!}";
 
@@ -63,6 +69,7 @@
       });
 
     });
+
   });
 </script>
 
