@@ -52,9 +52,6 @@ class TodoListsController extends Controller {
     
     $lastInserted = $todolist->id;
 
-    // return redirect('home');
-    // return redirect('home');
-    // return Redirect::action('TodoListsController@show', array($lastInserted));
     return redirect()->action('TodoListsController@show', ['id' => $lastInserted]);
 	}
 
@@ -72,7 +69,6 @@ class TodoListsController extends Controller {
     if ($todolist) {
       $data = [];
       $data['todolist'] = $todolist;
-      // $data['todos'] = $todolist->todos;
 
       // If current user is loggedin
       if (!Auth::guest()) {

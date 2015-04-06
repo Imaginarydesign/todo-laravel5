@@ -36,6 +36,7 @@ class HomeController extends Controller {
 	{
 
     $data = [];
+
 		return view('home', $data);
 	}
 
