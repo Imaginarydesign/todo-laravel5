@@ -40,8 +40,9 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Laravel 5</div>
+				<div class="title">Todo App</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
+        <p><a href="/home">Login</a></p>
 			</div>
 		</div>
 	</body>
