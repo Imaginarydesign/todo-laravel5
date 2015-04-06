@@ -3,29 +3,29 @@
 @section('content')
   
   @if(count($user->todolists) > 0)
-  <h2 class="page-header">All tasks </h2>
-  
-  <table class="table table-hover">
-    <tbody>
-    @foreach ($user->todolists as $todolist)
-      @foreach ($todolist->todos as $todo)
-        <tr id="{{ $todo->id }}">
-          @if ($todo->completed == 1) 
-          <td style="width: 5%;"><input type="checkbox" name="completed" checked="checked"></td>
-          @else
-          <td style="width: 5%;"><input type="checkbox" name="completed" id="{{ $todo->id }}"></td>
-          @endif
-          <td>{{ $todo->name }}</td>
-          <td><span class="text-muted"><em>{{ $todolist->name }}</em></span></td>
-          <td style="text-align: right;"><a href="{{ action('TodosController@edit', [$todo->id]) }}">Edit</a> | <a href="javascript:deleteTodo({{$todo->id}});">Delete</a></td>
-        </tr>
+    <h2 class="page-header">All tasks </h2>
+    
+    <table class="table table-hover">
+      <tbody>
+      @foreach ($user->todolists as $todolist)
+        @foreach ($todolist->todos as $todo)
+          <tr id="{{ $todo->id }}">
+            @if ($todo->completed == 1) 
+            <td style="width: 5%;"><input type="checkbox" name="completed" checked="checked"></td>
+            @else
+            <td style="width: 5%;"><input type="checkbox" name="completed" id="{{ $todo->id }}"></td>
+            @endif
+            <td>{{ $todo->name }}</td>
+            <td><span class="text-muted"><em>{{ $todolist->name }}</em></span></td>
+            <td style="text-align: right;"><a href="{{ action('TodosController@edit', [$todo->id]) }}">Edit</a> | <a href="javascript:deleteTodo({{$todo->id}});">Delete</a></td>
+          </tr>
+        @endforeach
       @endforeach
-    @endforeach
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   @else
-  <h2 class="page-header">You don't have any lists</h2>
-  <p>Why don't you create one</p>
+    <h2 class="page-header">You don't have any lists</h2>
+    <p>Why don't you create one</p>
   @endif
 
 @endsection
