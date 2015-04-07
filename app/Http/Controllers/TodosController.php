@@ -4,6 +4,7 @@ use App\Todo;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TodoListsController;
+use App\Http\Requests\CreateTodoRequest;
 use Auth;
 
 // use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class TodosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateTodoRequest $request)
 	{
 		$input = Request::all();
 

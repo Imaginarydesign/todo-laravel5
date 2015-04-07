@@ -23,7 +23,6 @@ class CreateTodolistRequest extends Request {
 	{
 		return [
 			'name' => 'required|min:3'
-
 		];
 	}
 

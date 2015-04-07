@@ -125,7 +125,9 @@ class TodoListsController extends Controller {
     $todolist->name = Request::get('name');
     $todolist->save();
 
-    return redirect('home');
+    \Session::flash('flash_message', 'List updated');
+
+    return redirect()->action('TodoListsController@show', ['id' => $id]);
 	}
 
 	/**
