@@ -1,11 +1,11 @@
-## Todo App
+## Todo (Laravel5)
 
-**Todo ** is a tutorial application.
+Simple todo application.
 
 
 ### Installation ###
 
-* `git clone https://github.com/bestmomo/laravel5-example.git projectname`
+* `git clone https://github.com/Imaginarydesign/todo-laravel5.git projectname`
 * `cd projectname`
 * `composer install`
 * `php artisan key:generate`
