@@ -14,7 +14,7 @@ class AddCompletedToTodosTable extends Migration {
 	{
 		Schema::table('todos', function(Blueprint $table)
 		{
-			$table->boolean('completed')->after('name');
+			$table->boolean('completed')->default(0)->after('name');
 		});
 	}
 
