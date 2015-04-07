@@ -2,6 +2,8 @@
 
 Simple todo application.
 
+![todo](https://github.com/Imaginarydesign/todo-laravel5/raw/master/public/image.png)
+
 
 ### Installation ###
 
