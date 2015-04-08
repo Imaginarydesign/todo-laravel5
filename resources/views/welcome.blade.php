@@ -42,7 +42,7 @@
 			<div class="content">
 				<div class="title">Todo App</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
-        <p><a href="/home">Login</a></p>
+        <p><a href="/home">Login</a> | <a href="/auth/register">Register</a></p>
 			</div>
 		</div>
 	</body>
